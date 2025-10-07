@@ -25,45 +25,6 @@ The system follows a simple API gateway pattern:
 - The gateway routes requests to the appropriate downstream API (orders or products).
 - Backend services are independent ASP.NET Core apps organized by domain and can call into additional services or databases as needed.
 
-Data-flow diagram (Mermaid)
-
-```mermaid
-flowchart LR
-  subgraph FE[Frontend]
-    A[User Browser / SPA]
-  end
-
-  subgraph GW[API Gateway]
-    B[Ocelot Gateway]\n(Host: container 'gateway', host port 5000)
-  end
-
-  subgraph BE[Backend Services]
-  C[Order API]\n(service: order-api, container port 80, host 5001)
-    D[Product API]\n(service: product-api, container port 80, host 5002)
-  end
-
-  A -->|HTTP (REST/JSON)| B
-  B -->|/api/orders/*| C
-  B -->|/api/products/*| D
-  C -->|DB / other services| E[(Database / external services)]
-  D -->|DB / other services| E
-
-  classDef infra fill:#f9f,stroke:#333,stroke-width:1px;
-  class E infra;
-```
-
-If your Markdown renderer supports Mermaid the above will render as a proper diagram. If not, see the ASCII fallback below.
-
-ASCII fallback (FE -> Gateway -> Services)
-
-Frontend (browser)
-  |
-  | HTTP request -> Gateway (host:5000)
-  v
-Gateway (Ocelot)
-  |---> Order API (order-api:80)  [host mapped 5001]
-  |---> Product API (product-api:80) [host mapped 5002]
-
 ## Quick start (Docker / docker-compose)
 
 This repo includes `docker-compose.yml` at the project root which builds and runs the frontend, gateway, order-api and product-api on a single Docker network.
