@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  order-api:
+    build:
+      context: ./api/example.order.api/example.order.api
+      dockerfile: Dockerfile
+    image: shop-demo-order-api:local
+    container_name: shop-demo-order-api
+    restart: unless-stopped
+    ports:
+      - "5001:80"
+    networks:
+      - shop-demo-net
+
+  product-api:
+    build:
+      context: ./api/example.product.api/example.product.api
+      dockerfile: Dockerfile
+    image: shop-demo-product-api:local
+    container_name: shop-demo-product-api
+    restart: unless-stopped
+    ports:
+      - "5002:80"
+    networks:
+      - shop-demo-net
+
+  gateway:
+    build:
+      context: ./gateway/example.api.gateway
+      dockerfile: Dockerfile
+    image: shop-demo-gateway:local
+    container_name: shop-demo-gateway
+    restart: unless-stopped
+    ports:
+      - "5000:80"
+    depends_on:
+      - order-api
+      - product-api
+    networks:
+      - shop-demo-net
+
+  frontend:
+    build:
+      context: ./fe/example
+      dockerfile: Dockerfile
+    image: shop-demo-frontend:local
+    container_name: shop-demo-frontend
+    restart: unless-stopped
+    ports:
+      - "4200:80"
+    networks:
+      - shop-demo-net
+
+networks:
+  shop-demo-net:
+    driver: bridge

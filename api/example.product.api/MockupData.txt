@@ -1,0 +1,10 @@
+INSERT INTO PRO.ProductCategory 
+    (CategoryName, Description, CreatedAt, CreatedBy, UpdatedAt, UpdatedBy, IsDeleted)
+VALUES
+    ('Men', 'Men clothing and fashion items', GETDATE(), 'System', NULL, NULL, 0),
+    ('Women', 'Women clothing and accessories', GETDATE(), 'System', NULL, NULL, 0),
+    ('Kids', 'Kids and baby clothing items', GETDATE(), 'System', NULL, NULL, 0),
+    ('Accessories', 'Accessories including bags, jewelry, hats, etc.', GETDATE(), 'System', NULL, NULL, 0),
+    ('Footwear', 'Shoes, boots, sandals and more', GETDATE(), 'System', NULL, NULL, 0),
+    ('Sportswear', 'Sports and activewear products', GETDATE(), 'System', NULL, NULL, 0),
+    ('Outerwear', 'Jackets, coats, and seasonal outerwear', GETDATE(), 'System', NULL, NULL, 0)
