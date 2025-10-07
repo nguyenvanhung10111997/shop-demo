@@ -6,7 +6,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 5018
+          "Port": 5001
         }
       ],
       "UpstreamPathTemplate": "/api/orders/{everything}",
@@ -25,7 +25,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 5018
+          "Port": 5001
         }
       ],
       "UpstreamPathTemplate": "/api/orderStatus/{everything}",

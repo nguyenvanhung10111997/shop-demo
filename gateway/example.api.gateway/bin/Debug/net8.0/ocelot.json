@@ -15,12 +15,10 @@
       "DownstreamHeaderTransform": {},
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5018
+          "Host": "order-api",
+          "Port": 80
         }
       ],
-      "DownstreamHttpMethod": null,
-      "DownstreamHttpVersion": null,
       "DownstreamHttpVersionPolicy": null,
       "DownstreamPathTemplate": "/api/orders/{everything}",
       "DownstreamScheme": "http",
@@ -95,9 +93,10 @@
       "DownstreamHeaderTransform": {},
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5018
+          "Host": "order-api",
+          "Port": 80
         }
+      ],
       ],
       "DownstreamHttpMethod": null,
       "DownstreamHttpVersion": null,
@@ -175,8 +174,8 @@
       "DownstreamHeaderTransform": {},
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5002
+          "Host": "product-api",
+          "Port": 80
         }
       ],
       "DownstreamHttpMethod": null,
