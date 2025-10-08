@@ -18,6 +18,7 @@ export interface OrderCreateRequest {
 
 export interface OrderDetailCreateRequest {
   productId: string;
+  productCode: string;
   productName: string;
   amount: number;
   quantity: number;

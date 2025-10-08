@@ -63,6 +63,7 @@ export const CartStore = signalStore(
         (item) =>
           ({
             productId: item.id,
+            productCode: item.productCode,
             productName: item.productName,
             quantity: item.quantity,
             amount: item.totalPrice,

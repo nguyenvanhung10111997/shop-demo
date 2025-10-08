@@ -29,7 +29,7 @@ export class OrderService {
   }
 
   createOrder(order: OrderCreateRequest): Observable<boolean> {
-    return this.apiService.post<boolean>(this.orderApiUrl, order);
+    return this.apiService.post<boolean>(this.orderApiUrl + '/create', order);
   }
 
   getOrderDetails(orderId: string): Observable<OrderDetail[]> {
