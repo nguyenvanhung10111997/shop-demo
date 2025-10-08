@@ -5,7 +5,7 @@ using MediatR;
 
 namespace example.order.service.Features.OrderStatuses.QueryHandlers;
 
-internal class GetAllOrderStatusHandler : BaseService, IRequestHandler<GetAllOrderStatusQuery, IEnumerable<OrderStatus>>
+public class GetAllOrderStatusHandler : BaseService, IRequestHandler<GetAllOrderStatusQuery, IEnumerable<OrderStatus>>
 {
     private readonly IReadOnlyRepository<OrderStatus> _orderStatusReadOnlyRepository;
 

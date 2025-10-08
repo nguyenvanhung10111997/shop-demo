@@ -5,7 +5,7 @@ using MediatR;
 
 namespace example.order.service.Features.ProductCategories.QueryHandlers;
 
-internal class GetAllProductCategoryHandler : BaseService, IRequestHandler<GetAllProductCategoryQuery, IEnumerable<ProductCategory>>
+public class GetAllProductCategoryHandler : BaseService, IRequestHandler<GetAllProductCategoryQuery, IEnumerable<ProductCategory>>
 {
     private readonly IReadOnlyRepository<ProductCategory> _productCategoryReadOnlyRepository;
 

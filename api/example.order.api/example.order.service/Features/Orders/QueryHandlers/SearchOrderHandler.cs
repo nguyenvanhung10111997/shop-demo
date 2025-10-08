@@ -8,7 +8,7 @@ using System.Linq.Expressions;
 
 namespace example.service.Features;
 
-internal class SearchOrderHandler : BaseService, IRequestHandler<SearchOrderQuery, PagingResult<Order>>
+public class SearchOrderHandler : BaseService, IRequestHandler<SearchOrderQuery, PagingResult<Order>>
 {
     private readonly IReadOnlyRepository<Order> _orderReadOnlyRepository;
 

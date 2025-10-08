@@ -3,7 +3,7 @@ using example.infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 
-namespace example.order.service.tests;
+namespace example.order.consumer.tests;
 
 public class TestFixtureBase
 {

@@ -1,7 +1,9 @@
 ﻿using Autofac;
 using example.api.Configurations;
+using example.order.api.Middleware;
 using example.order.infrastructure.Configurations;
 using example.service.Configurations;
+using MediatR;
 
 namespace example.api
 {
@@ -20,6 +22,9 @@ namespace example.api
             services.AddMediator();
             services.AddControllers();
             services.ConfigureMassTransit();
+
+            // Register the ValidationBehavior as a MediatR pipeline behavior
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             services.AddEndpointsApiExplorer();

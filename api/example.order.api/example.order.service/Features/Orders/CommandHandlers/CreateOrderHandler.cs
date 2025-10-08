@@ -3,12 +3,13 @@ using example.infrastructure;
 using example.order.domain.Entities;
 using example.order.infrastructure.Messages;
 using example.order.infrastructure.Sqs;
+using example.order.service.Features.Orders.DTO;
 using MediatR;
 using Newtonsoft.Json;
 
 namespace example.service.Features
 {
-    internal class CreateOrderHandler : BaseService, IRequestHandler<CreateOrderCommand, Unit>
+    public class CreateOrderHandler : BaseService, IRequestHandler<CreateOrderCommand, Unit>
     {
         private readonly ISqsProducer _sqsProducer;
         private readonly IRepository<OrderTemp> _orderTempRepository;
@@ -52,6 +53,6 @@ namespace example.service.Features
     public class CreateOrderCommand : IRequest<Unit>
     {
         public string? Description { get; set; }
-        public IEnumerable<OrderDetail> OrderDetails { get; set; } = [];
+        public List<OrderDetailCreateRequest> OrderDetails { get; set; } = [];
     }
 }

@@ -5,7 +5,7 @@ using MediatR;
 
 namespace example.order.service.Features.Orders.QueryHandlers;
 
-internal class GetOrderDetailsByIdHandler : BaseService, IRequestHandler<GetOrderDetailsByIdQuery, IEnumerable<OrderDetail>>
+public class GetOrderDetailsByIdHandler : BaseService, IRequestHandler<GetOrderDetailsByIdQuery, IEnumerable<OrderDetail>>
 {
     private readonly IReadOnlyRepository<OrderDetail> _orderDetailReadOnlyRepository;
 
