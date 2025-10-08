@@ -1,8 +1,0 @@
--- Check and install @angular/cli globally
-    	npm install -g @angular/cli
-
--- Create a new Angular app with cli
-	ng new my-app --standalone
-
--- Create a component
-	ng g c features/dashboard --standalone

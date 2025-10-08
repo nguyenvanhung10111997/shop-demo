@@ -1,0 +1,66 @@
+<div class="flex gap-6">
+  <!-- Filters Sidebar -->
+  <aside class="hidden lg:block w-64 flex-shrink-0">
+    <div class="bg-white rounded-lg shadow-sm p-6 sticky top-24">
+      <h2 class="font-semibold text-lg mb-4">Filters</h2>
+
+      <div class="mb-6">
+        <h3 class="font-medium text-sm text-gray-700 mb-3">Categories</h3>
+        <div class="space-y-2">
+          @for (cat of categories(); track cat) {
+          <button
+            (click)="selectCategory(cat.id)"
+            [class.bg-blue-50]="productStore.selectedCategory() === cat.id"
+            [class.text-blue-600]="productStore.selectedCategory() === cat.id"
+            [class.font-medium]="productStore.selectedCategory() === cat.id"
+            [class.text-gray-600]="productStore.selectedCategory() !== cat.id"
+            class="w-full text-left px-3 py-2 rounded-md text-sm hover:bg-gray-50 transition-colors cursor-pointer"
+          >
+            {{ cat.categoryName }}
+          </button>
+          }
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Products Grid -->
+  <div class="flex-1">
+    <!-- Search Bar -->
+    <div class="mb-6">
+      <div class="relative">
+        <svg
+          class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+          />
+        </svg>
+        <input
+          type="text"
+          placeholder="Search products..."
+          [ngModel]="productStore.keySearch()"
+          (ngModelChange)="onSearchChange($event)"
+          class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+        />
+      </div>
+    </div>
+
+    <div class="mb-4 text-sm text-gray-600">Showing {{ filteredProducts().length }} products</div>
+
+    <!-- Virtual Scroll -->
+    <cdk-virtual-scroll-viewport itemSize="400" class="h-[calc(100vh-250px)]">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 pr-4">
+        @for (product of filteredProducts(); track product.id) {
+        <app-product-card [product]="product" (addToCart)="onAddToCart($event)" />
+        }
+      </div>
+    </cdk-virtual-scroll-viewport>
+  </div>
+</div>

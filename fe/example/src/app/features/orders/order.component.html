@@ -1,0 +1,113 @@
+<div class="ml-100">
+  <div class="mb-6">
+    <h1 class="text-3xl font-bold text-gray-900 mb-4">My Orders</h1>
+
+    <!-- Order Filters -->
+    <div class="flex flex-wrap gap-2">
+      @for (filter of filters; track filter.id) {
+      <button
+        (click)="setFilter(filter.id)"
+        [class.bg-blue-600]="orderStore.statusFilter() === filter.id"
+        [class.text-white]="orderStore.statusFilter() === filter.id"
+        [class.bg-white]="orderStore.statusFilter() !== filter.id"
+        [class.text-gray-600]="orderStore.statusFilter() !== filter.id"
+        class="px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors cursor-pointer"
+      >
+        {{ filter.statusName }}
+      </button>
+      }
+    </div>
+  </div>
+
+  <!-- Orders List -->
+  <div class="space-y-4">
+    @for (order of filteredOrders(); track order.id) {
+    <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+      <div class="p-6">
+        <div class="flex items-start justify-between mb-4">
+          <div>
+            <h3 class="font-semibold text-lg text-gray-900">{{ order.orderCode }}</h3>
+            <p class="text-sm text-gray-500">{{ order.createdAt | date: 'dd/MM/yyyy HH:mm:ss' }}</p>
+          </div>
+          <div [class]="getStatusClass(order.orderStatusId)">
+            <span class="text-sm font-medium">{{ getStatusLabel(order.orderStatusId) }}</span>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex gap-6">
+            <div>
+              <p class="text-sm text-gray-500">Total</p>
+              <p class="font-semibold text-gray-900">${{ order.totalAmount.toFixed(2) }}</p>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500">Items</p>
+              <p class="font-semibold text-gray-900">{{ order.totalQuantity }}</p>
+            </div>
+          </div>
+          <button
+            (click)="toggleExpansion(order.id)"
+            class="flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium cursor-pointer"
+          >
+            {{ isExpanded(order.id) ? 'Hide' : 'View' }} Details
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                [attr.d]="isExpanded(order.id) ? 'M5 15l7-7 7 7' : 'M19 9l-7 7-7-7'"
+              />
+            </svg>
+          </button>
+        </div>
+
+        @if (isExpanded(order.id)) {
+        <div class="border-t pt-4 mt-4">
+          <h4 class="font-medium text-gray-900 mb-3">Order Items</h4>
+          <div class="space-y-2">
+            @for (item of order.orderDetails; track item.id) {
+            <div class="flex items-center justify-between py-2">
+              <div class="flex items-center gap-3">
+                <svg
+                  class="w-4 h-4 text-green-500"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+                <span class="text-gray-900">{{ item.productId }}</span>
+                <span class="text-gray-500 text-sm">×{{ item.quantity }}</span>
+              </div>
+              <span class="font-medium text-gray-900"
+                >${{ item.amount.toFixed(2) }}</span
+              >
+            </div>
+            }
+          </div>
+          <div class="flex gap-3 mt-4">
+            @if (order.orderStatusId === 2) {
+            <button
+              class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors cursor-pointer"
+            >
+              Track Order
+            </button>
+            } @if (order.orderStatusId === 1) {
+            <button
+              class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors cursor-pointer">
+              Cancel Order
+            </button>
+            }
+          </div>
+        </div>
+        }
+      </div>
+    </div>
+    }
+  </div>
+</div>

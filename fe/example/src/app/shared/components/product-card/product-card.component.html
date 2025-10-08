@@ -1,0 +1,42 @@
+<div class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden group">
+  <div class="relative aspect-square overflow-hidden bg-gray-100">
+    <img
+      [src]="product().imageUrl"
+      [alt]="product().productName"
+      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+    />
+    @if (product().stock <= 0) {
+    <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+      <span class="text-white font-semibold">Out of Stock</span>
+    </div>
+    }
+  </div>
+  <div class="p-4">
+    <h3 class="font-medium text-gray-900 mb-1 truncate">{{ product().productName }}</h3>
+    <div class="flex items-center gap-1 mb-2">
+      <div class="flex text-yellow-400 text-sm">
+        {{ getStars(product().rating) }}
+      </div>
+      <span class="text-sm text-gray-600">({{ product().rating }})</span>
+    </div>
+    <div class="flex items-center gap-2 mb-3">
+      <span class="text-xl font-bold text-gray-900">${{ product().price }}</span>
+      <span class="text-sm text-gray-400 line-through">${{ product().price }}</span>
+    </div>
+    <button
+      (click)="addToCart.emit(product())"
+      [disabled]="product().stock <= 0"
+      class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed flex items-center justify-center gap-2 cursor-pointer"
+    >
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+        />
+      </svg>
+      Add to Cart
+    </button>
+  </div>
+</div>
