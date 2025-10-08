@@ -9,6 +9,7 @@ export interface Order {
   description: string;
   createdAt: string;
   orderDetails: OrderDetail[];
+  isExpanded?: boolean;
 }
 
 export interface OrderCreateRequest {

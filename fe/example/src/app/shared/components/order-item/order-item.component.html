@@ -1,0 +1,44 @@
+<div class="bg-white rounded-lg shadow-sm overflow-hidden mb-4">
+  <div class="p-6">
+    <div class="flex items-start justify-between">
+      <div>
+        <h3 class="font-semibold text-lg text-gray-900">{{ order().orderCode }}</h3>
+        <p class="text-sm text-gray-500">{{ order().createdAt | date : 'dd/MM/yyyy HH:mm:ss' }}</p>
+      </div>
+      <div [class]="getStatusClass(order().orderStatusId)">
+        <span class="text-sm font-medium">{{ getStatusLabel(order().orderStatusId) }}</span>
+      </div>
+    </div>
+
+    <div class="flex items-center justify-between mb-4">
+      <div class="flex gap-6">
+        <div>
+          <p class="text-sm text-gray-500">Total</p>
+          <p class="font-semibold text-gray-900">${{ order().totalAmount.toFixed(2) }}</p>
+        </div>
+        <div>
+          <p class="text-sm text-gray-500">Items</p>
+          <p class="font-semibold text-gray-900">{{ order().totalQuantity }}</p>
+        </div>
+      </div>
+      <button
+        (click)="toggleExpansion.emit(order().id)"
+        class="flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium cursor-pointer"
+      >
+        {{ order().isExpanded ? 'Hide' : 'View' }} Details
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            [attr.d]="order().isExpanded ? 'M5 15l7-7 7 7' : 'M19 9l-7 7-7-7'"
+          />
+        </svg>
+      </button>
+    </div>
+
+    @if (order().isExpanded) {
+    <app-order-detail-info [order]="order()"></app-order-detail-info>
+    }
+  </div>
+</div>

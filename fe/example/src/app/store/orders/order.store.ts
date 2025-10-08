@@ -10,7 +10,6 @@ import { create } from 'domain';
 interface OrderState {
   orders: Order[];
   loading: boolean;
-  expandedOrderId: string | null;
   statusFilter: number | '-1';
   orderStatuses: OrderStatus[];
   totalRecords: number;
@@ -19,7 +18,6 @@ interface OrderState {
 const initialState: OrderState = {
   orders: [],
   loading: false,
-  expandedOrderId: null,
   statusFilter: '-1',
   orderStatuses: [],
   totalRecords: 0
@@ -61,8 +59,11 @@ export const OrderStore = signalStore(
     },
 
     toggleOrderExpansion(orderId: string): void {
-      const currentId = store.expandedOrderId();
-      updateState(store, 'toggleOrderExpansion', {  expandedOrderId: currentId === orderId ? null : orderId });
+      const updatedOrders = store.orders().map((item) =>
+          item.id === orderId ? { ...item, isExpanded: !item.isExpanded } : item
+        );
+
+      updateState(store, 'toggleOrderExpansion', {  orders: updatedOrders });
     }
   }))
 );
