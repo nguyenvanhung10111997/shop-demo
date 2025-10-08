@@ -1,26 +1,26 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\john\\source\\repos\\example.api.gateway\\",
+  "WorkspaceRootPath": "D:\\Projects\\Personal\\shop-demo\\gateway\\example.api.gateway\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C16960F8-5260-4148-AB18-55C2559767BB}|example.api.gateway.csproj|c:\\users\\john\\source\\repos\\example.api.gateway\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C16960F8-5260-4148-AB18-55C2559767BB}|example.api.gateway.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C16960F8-5260-4148-AB18-55C2559767BB}|example.api.gateway.csproj|c:\\users\\john\\source\\repos\\example.api.gateway\\ocelot.order.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{C16960F8-5260-4148-AB18-55C2559767BB}|example.api.gateway.csproj|solutionrelative:ocelot.order.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C16960F8-5260-4148-AB18-55C2559767BB}|example.api.gateway.csproj|c:\\users\\john\\source\\repos\\example.api.gateway\\ocelot.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{C16960F8-5260-4148-AB18-55C2559767BB}|example.api.gateway.csproj|d:\\projects\\personal\\shop-demo\\gateway\\example.api.gateway\\ocelot.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{C16960F8-5260-4148-AB18-55C2559767BB}|example.api.gateway.csproj|solutionrelative:ocelot.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C16960F8-5260-4148-AB18-55C2559767BB}|example.api.gateway.csproj|c:\\users\\john\\source\\repos\\example.api.gateway\\ocelot.product.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{C16960F8-5260-4148-AB18-55C2559767BB}|example.api.gateway.csproj|d:\\projects\\personal\\shop-demo\\gateway\\example.api.gateway\\ocelot.order.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{C16960F8-5260-4148-AB18-55C2559767BB}|example.api.gateway.csproj|solutionrelative:ocelot.order.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C16960F8-5260-4148-AB18-55C2559767BB}|example.api.gateway.csproj|d:\\projects\\personal\\shop-demo\\gateway\\example.api.gateway\\ocelot.product.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{C16960F8-5260-4148-AB18-55C2559767BB}|example.api.gateway.csproj|solutionrelative:ocelot.product.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C16960F8-5260-4148-AB18-55C2559767BB}|example.api.gateway.csproj|c:\\users\\john\\source\\repos\\example.api.gateway\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{C16960F8-5260-4148-AB18-55C2559767BB}|example.api.gateway.csproj|d:\\projects\\personal\\shop-demo\\gateway\\example.api.gateway\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{C16960F8-5260-4148-AB18-55C2559767BB}|example.api.gateway.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C16960F8-5260-4148-AB18-55C2559767BB}|example.api.gateway.csproj|d:\\projects\\personal\\shop-demo\\gateway\\example.api.gateway\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C16960F8-5260-4148-AB18-55C2559767BB}|example.api.gateway.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,59 +42,63 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "ocelot.product.json",
-              "DocumentMoniker": "C:\\Users\\john\\source\\repos\\example.api.gateway\\ocelot.product.json",
+              "DocumentMoniker": "D:\\Projects\\Personal\\shop-demo\\gateway\\example.api.gateway\\ocelot.product.json",
               "RelativeDocumentMoniker": "ocelot.product.json",
-              "ToolTip": "C:\\Users\\john\\source\\repos\\example.api.gateway\\ocelot.product.json",
+              "ToolTip": "D:\\Projects\\Personal\\shop-demo\\gateway\\example.api.gateway\\ocelot.product.json",
               "RelativeToolTip": "ocelot.product.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-10-06T07:28:56.271Z"
+              "WhenOpened": "2025-10-06T07:28:56.271Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "ocelot.order.json",
-              "DocumentMoniker": "C:\\Users\\john\\source\\repos\\example.api.gateway\\ocelot.order.json",
+              "DocumentMoniker": "D:\\Projects\\Personal\\shop-demo\\gateway\\example.api.gateway\\ocelot.order.json",
               "RelativeDocumentMoniker": "ocelot.order.json",
-              "ToolTip": "C:\\Users\\john\\source\\repos\\example.api.gateway\\ocelot.order.json",
+              "ToolTip": "D:\\Projects\\Personal\\shop-demo\\gateway\\example.api.gateway\\ocelot.order.json",
               "RelativeToolTip": "ocelot.order.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAeAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-10-06T07:28:40.939Z"
+              "WhenOpened": "2025-10-06T07:28:40.939Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\john\\source\\repos\\example.api.gateway\\appsettings.json",
+              "DocumentMoniker": "D:\\Projects\\Personal\\shop-demo\\gateway\\example.api.gateway\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
-              "ToolTip": "C:\\Users\\john\\source\\repos\\example.api.gateway\\appsettings.json",
+              "ToolTip": "D:\\Projects\\Personal\\shop-demo\\gateway\\example.api.gateway\\appsettings.json",
               "RelativeToolTip": "appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-10-06T07:22:50.986Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ocelot.json",
-              "DocumentMoniker": "C:\\Users\\john\\source\\repos\\example.api.gateway\\ocelot.json",
-              "RelativeDocumentMoniker": "ocelot.json",
-              "ToolTip": "C:\\Users\\john\\source\\repos\\example.api.gateway\\ocelot.json",
-              "RelativeToolTip": "ocelot.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAM8BAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-10-06T07:17:49.984Z"
+              "WhenOpened": "2025-10-06T07:22:50.986Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "ocelot.json",
+              "DocumentMoniker": "D:\\Projects\\Personal\\shop-demo\\gateway\\example.api.gateway\\ocelot.json",
+              "RelativeDocumentMoniker": "ocelot.json",
+              "ToolTip": "D:\\Projects\\Personal\\shop-demo\\gateway\\example.api.gateway\\ocelot.json",
+              "RelativeToolTip": "ocelot.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-10-06T07:17:49.984Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\john\\source\\repos\\example.api.gateway\\Program.cs",
+              "DocumentMoniker": "D:\\Projects\\Personal\\shop-demo\\gateway\\example.api.gateway\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\john\\source\\repos\\example.api.gateway\\Program.cs",
+              "ToolTip": "D:\\Projects\\Personal\\shop-demo\\gateway\\example.api.gateway\\Program.cs",
               "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",

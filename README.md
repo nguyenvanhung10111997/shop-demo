@@ -39,8 +39,9 @@ Open in your browser:
 
 - Frontend: http://localhost:4200 (Nginx serves the production bundle)
 - Gateway: http://localhost:5000 (forwarding to backend services)
- - Order API (direct, if needed): http://localhost:5001
+- Order API (direct, if needed): http://localhost:5001
 - Product API (direct, if needed): http://localhost:5002
+- Order Consumer: Worker Service
 
 ## Architecture diagram (SVG)
 
