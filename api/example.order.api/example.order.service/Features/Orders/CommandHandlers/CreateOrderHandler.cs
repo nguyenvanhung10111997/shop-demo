@@ -24,7 +24,7 @@ namespace example.service.Features
         {
             var orderTempId = await CreateOrderTemp(request);
 
-            var message = new OrderMessage { OrderTempId = orderTempId };
+            var message = new OrderCreateMessage { OrderTempId = orderTempId };
 
             await _sqsProducer.SendMessage(message);
 

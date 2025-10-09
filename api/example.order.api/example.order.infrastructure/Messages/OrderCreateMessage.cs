@@ -2,7 +2,7 @@
 
 namespace example.order.infrastructure.Messages;
 
-public class OrderMessage : MessageBase
+public class OrderCreateMessage : MessageBase
 {
     public required Guid OrderTempId { get; set; }
 }

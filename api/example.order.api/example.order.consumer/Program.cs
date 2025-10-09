@@ -1,4 +1,4 @@
-using Autofac.Extensions.DependencyInjection;
+﻿using Autofac.Extensions.DependencyInjection;
 using example.consumer;
 
 var builder = Host.CreateDefaultBuilder(args)
@@ -12,4 +12,5 @@ var builder = Host.CreateDefaultBuilder(args)
                    });
 
 var app = builder.Build();
+
 app.Run();

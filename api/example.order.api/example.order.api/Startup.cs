@@ -1,8 +1,12 @@
-﻿using Autofac;
+﻿using Amazon.SimpleNotificationService;
+using Autofac;
 using example.api.Configurations;
+using example.infrastructure.Configurations;
 using example.order.api.Middleware;
 using example.order.infrastructure.Configurations;
+using example.order.infrastructure.Messages;
 using example.service.Configurations;
+using MassTransit;
 using MediatR;
 
 namespace example.api
@@ -21,7 +25,7 @@ namespace example.api
             services.AddRepositories();
             services.AddMediator();
             services.AddControllers();
-            services.ConfigureMassTransit();
+            ConfigureMassTransit(services);
 
             // Register the ValidationBehavior as a MediatR pipeline behavior
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
@@ -56,6 +60,64 @@ namespace example.api
             app.UseHttpsRedirection();
             app.UseRouting();
             app.UseEndpoints(x => x.MapControllers());
+        }
+
+        private void ConfigureMassTransit(IServiceCollection services)
+        {
+            services.AddMassTransit(x =>
+            {
+                x.AddConsumers(typeof(Program).Assembly);
+
+                x.UsingAmazonSqs((context, cfg) =>
+                {
+                    cfg.Host(new Uri(ApiConfig.Providers.AmazonSQS.Host), h =>
+                    {
+                        h.AccessKey(ApiConfig.Providers.AmazonSQS.AccessKey);
+                        h.SecretKey(ApiConfig.Providers.AmazonSQS.SecretKey);
+                        h.Config(new AmazonSimpleNotificationServiceConfig { ServiceURL = ApiConfig.Providers.AmazonSQS.ServiceURL });
+                        h.Config(new Amazon.SQS.AmazonSQSConfig { ServiceURL = ApiConfig.Providers.AmazonSQS.ServiceURL });
+                    });
+
+                    // ✅ Common FIFO topic attributes
+                    var fifoAttributes = new Dictionary<string, string>
+                    {
+                        ["FifoTopic"] = "true",
+                        ["ContentBasedDeduplication"] = "true"
+                    };
+
+                    // ✅ Configure message entities
+                    ConfigureMessage<OrderCreateMessage>(cfg, ApiConfig.Providers.AmazonSQS.QueueNames.CreateOrderQueue, fifoAttributes);
+                    ConfigureMessage<OrderUpdateMessage>(cfg, ApiConfig.Providers.AmazonSQS.QueueNames.UpdateOrderQueue, fifoAttributes);
+
+                    // ✅ Configure all consumers automatically
+                    cfg.ConfigureEndpoints(context);
+                });
+            });
+        }
+
+        /// <summary>
+        /// Configures a message type for FIFO SQS/SNS integration
+        /// </summary>
+        private static void ConfigureMessage<TMessage>(
+            IAmazonSqsBusFactoryConfigurator cfg,
+            string queueName,
+            Dictionary<string, string> fifoAttributes)
+            where TMessage : class
+        {
+            // Ensure queue name ends with .fifo
+            var fifoQueueName = queueName.EndsWith(".fifo", StringComparison.OrdinalIgnoreCase)
+                ? queueName
+                : $"{queueName}.fifo";
+
+            // Configure entity (queue or topic)
+            cfg.Message<TMessage>(x => x.SetEntityName(fifoQueueName));
+
+            // Configure FIFO topic attributes
+            cfg.Publish<TMessage>(x =>
+            {
+                foreach (var attr in fifoAttributes)
+                    x.TopicAttributes[attr.Key] = attr.Value;
+            });
         }
     }
 }

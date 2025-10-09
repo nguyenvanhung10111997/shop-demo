@@ -36,8 +36,12 @@
         public string ServiceURL { get; set; }
         public string AccessKey { get; set; }
         public string SecretKey { get; set; }
-        public string QueueName { get; set; }
-        public string TopicName { get; set; }
-        public string ConsumerName { get; set; }
+        public AmazonSQSQueueNames QueueNames { get; set; }
+    }
+
+    public class AmazonSQSQueueNames
+    {
+        public string CreateOrderQueue { get; set; }
+        public string UpdateOrderQueue { get; set; }
     }
 }

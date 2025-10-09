@@ -48,40 +48,4 @@ public static class ServiceCollectionExtensions
 
         builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerLifetimeScope();
     }
-
-    public static IServiceCollection ConfigureMassTransit(this IServiceCollection services)
-    {
-        services.AddMassTransit(x =>
-        {
-            var executingAssembly = Assembly.GetEntryAssembly();
-            x.AddConsumers(executingAssembly);
-
-            x.UsingAmazonSqs((context, cfg) =>
-            {
-                cfg.Host(new Uri(ApiConfig.Providers.AmazonSQS.Host), h =>
-                {
-                    h.AccessKey(ApiConfig.Providers.AmazonSQS.AccessKey);
-                    h.SecretKey(ApiConfig.Providers.AmazonSQS.SecretKey);
-                    h.Config(new AmazonSimpleNotificationServiceConfig { ServiceURL = ApiConfig.Providers.AmazonSQS.ServiceURL });
-                    h.Config(new Amazon.SQS.AmazonSQSConfig { ServiceURL = ApiConfig.Providers.AmazonSQS.ServiceURL });
-                });
-
-                var consumerType = executingAssembly.GetType(ApiConfig.Providers.AmazonSQS.ConsumerName);
-
-                cfg.ReceiveEndpoint(ApiConfig.Providers.AmazonSQS.QueueName, e =>
-                {
-                    //e.Subscribe(ApiConfig.Providers.AmazonSQS.TopicName);
-
-                    if (consumerType != null)
-                    {
-                        e.ConfigureConsumer(context, consumerType);
-                    }
-                });
-
-                cfg.ConfigureEndpoints(context);
-            });
-        });
-
-        return services;
-    }
 }

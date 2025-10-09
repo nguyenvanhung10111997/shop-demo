@@ -16,7 +16,11 @@ internal class SqsProducer : ISqsProducer
 
     public async Task SendMessage<T>(T message)
     {
-        await _messageBus.Publish(message);
+        await _messageBus.Publish(message, callback: x =>
+        {
+            x.SetGroupId(Guid.NewGuid().ToString());
+            x.SetDeduplicationId(Guid.NewGuid().ToString());
+        });
         _logger.LogInformation("Sent message {Timestamp}", DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"));
     }
 }

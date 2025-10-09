@@ -4,19 +4,19 @@ using MassTransit;
 
 namespace example.order.consumer.Consumers;
 
-public class OrderConsumer : IConsumer<OrderMessage>
+public class CreateOrderConsumer : IConsumer<OrderCreateMessage>
 {
-    private readonly ILogger<OrderConsumer> _logger;
+    private readonly ILogger<CreateOrderConsumer> _logger;
     private readonly IOrderService _orderService;
 
-    public OrderConsumer(ILogger<OrderConsumer> logger,
+    public CreateOrderConsumer(ILogger<CreateOrderConsumer> logger,
         IOrderService orderService)
     {
         this._logger = logger;
         _orderService = orderService;
     }
 
-    public async Task Consume(ConsumeContext<OrderMessage> context)
+    public async Task Consume(ConsumeContext<OrderCreateMessage> context)
     {
         await _orderService.ProcessOrderAsync(context.Message.OrderTempId);
         _logger.LogInformation("Received message with ID {Id} and timestamp {Timestamp}", context.Message.Identifier, context.Message.Timestamp);
